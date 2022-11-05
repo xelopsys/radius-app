@@ -4,7 +4,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import Card from "../../components/Card/Card";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import Search from "../../components/Search/Search";
-import { useRouter } from "next/router";
 
 function Index() {
 	const [orders, setOrders] = useState<Data[]>([...data]);
@@ -14,7 +13,6 @@ function Index() {
 	const [recordsPerPage] = useState<number>(10);
 	const indexOfLastRecord = currentPage * recordsPerPage;
 	const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-	const { pathname } = useRouter();
 	const perPage = useMemo(() => {
 		setProductsPerPage([
 			...orders.slice(indexOfFirstRecord, indexOfLastRecord),
@@ -23,14 +21,6 @@ function Index() {
 			setProductsPerPage([]);
 		};
 	}, [orders, currentPage]);
-
-	// useMemo(() => {
-	// 	setOrders([
-	// 		...orders.filter((order) =>
-	// 			order.name.includes(searchValues.toLowerCase())
-	// 		),
-	// 	]);
-	// }, [searchValues]);
 	useEffect(() => {
 		if (searchValues) {
 			setOrders([
@@ -48,7 +38,7 @@ function Index() {
 	}, [searchValues]);
 
 	return (
-		<main className="ml-[20px] mr-16 rounded-md w-[1097px] max-w-[1097px] h-[97%] max-h-[875px] flex flex-col justify-start items-center box-border bg-[#F3F5F8] overflow-y-auto scrollbar-hide px-5">
+		<main className="ml-[20px] mx-3 md:mr-16 rounded-md w-[1097px] max-w-[1097px] h-[95%] max-h-[875px] flex flex-col justify-start items-center box-border bg-[#F3F5F8] overflow-y-auto scrollbar-hide px-5 mb-5">
 			<div className="my-5 w-full flex justify-start items-center">
 				<Breadcrumb />
 			</div>
@@ -61,7 +51,7 @@ function Index() {
 			</p>
 			<div className="w-full h-max flex flex-row justify-center md:justify-start lg:justify-start items-center flex-wrap gap-3 md:gap-4 lg:gap-5 col-start-1 box-border">
 				{productsPerPage.map((order: Data, index) => (
-					<div key={index}>
+					<div key={index} className="w-full h-max md:h-[265px] md:w-[192px]">
 						<Card id={index} {...order} />
 					</div>
 				))}

@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { Navbar } from "../components/Navbar/Navbar";
 import Head from "next/head";
 import Sidebar from "../components/Sidebar/Sidebar";
-
+import { AddToCartProvider } from "../context/AddToCartContext";
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
@@ -14,9 +14,11 @@ export default function App({ Component, pageProps }: AppProps) {
 			<header className="w-full h-max-content">
 				<Navbar />
 			</header>
-			<main className="w-full h-[90vh] flex flex-row justify-between items-start overflow-y-auto">
+			<main className="w-full h-[90vh] flex flex-row justify-between overflow-y-auto scrollbar-hide items-start relative">
 				<Sidebar />
-				<Component {...pageProps} />
+				<AddToCartProvider>
+					<Component {...pageProps} />
+				</AddToCartProvider>
 			</main>
 		</>
 	);

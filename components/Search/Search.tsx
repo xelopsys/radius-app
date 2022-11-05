@@ -32,9 +32,9 @@ const Search: React.FC<Props> = (props) => {
 			/>
 			<button
 				type="submit"
-				className="w-[10%] h-10 bg-[#00C48C]  px-3 py-1  rounded-r-3xl flex flex-row justify-center items-center"
+				className="w-[20$] md:w-[10%] h-10 bg-[#00C48C]  px-3 py-1  rounded-r-3xl flex flex-row justify-center items-center"
 			>
-				<BsSearch className="w-6 h-6 text-white" />
+				<BsSearch className="w-4 h-4 md:w-6 md:h-6 text-white" />
 			</button>
 		</form>
 	);
